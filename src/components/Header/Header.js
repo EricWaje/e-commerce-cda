@@ -1,18 +1,13 @@
-//import React from 'react'
-//import './Header.css';
 import style from './Header.module.css';
 import Nav from './Nav';
 
-/* const styles = {
-    navbar: {
-        color: 'white',
-    },
-}; */
-
 const Header = () => {
+    const prueba = () => {
+        //console.log('Click');
+    };
     return (
         <header className={style.header}>
-            <Nav isInHedaer={true} />
+            <Nav isInHedaer={true} prueba={prueba} />
         </header>
     );
 };
