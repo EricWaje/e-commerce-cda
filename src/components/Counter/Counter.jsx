@@ -1,39 +1,24 @@
 import React, { useState } from 'react';
 
-const Counter = () => {
-    //const estado = useState();
-    //console.log(estado);
-    const [count, setCount] = useState(0);
-    const [texto, setTexto] = useState('Inicial');
-    const [data, setData] = useState({ name: 'Eric' });
-    const [lista, setLista] = useState([
-        { name: 'Eric', id: 1 },
-        { name: 'Juan', id: 2 },
-        { name: 'Fer', id: 3 },
-    ]);
+const Counter = ({ stock, initial, onAdd }) => {
+    const [count, setCount] = useState(initial);
 
     const aumentar = () => {
-        //console.log('click');
-        setCount(count + 1);
-        //  x = 1;
+        count < stock && setCount(count + 1);
     };
 
-    const cambiarTexto = () => {
-        setTexto('otro');
+    const restar = () => {
+        initial < count && setCount(count - 1);
     };
 
     return (
         <div style={{ padding: '30px', margin: '20px' }}>
-            <h1 onClick={aumentar}>{count}</h1>
-            <button onClick={cambiarTexto}>Cambiar texto</button>
-            <h2>Texto: {texto}</h2>
-            <h2>Texto: {data.name}</h2>
-            {lista.map((elemento) => (
-                <p key={elemento.id}>{elemento.name}</p>
-            ))}
-            {/* {lista.map((elemento) => (
-                <OtroComponente elemento={elemento}/>
-            ))} */}
+            <button onClick={restar}>-</button>
+            <p>{count}</p>
+            <button onClick={aumentar}>+</button>
+            <div>
+                <button onClick={onAdd}>Add</button>
+            </div>
         </div>
     );
 };
