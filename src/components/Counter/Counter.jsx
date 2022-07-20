@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import styles from './Counter.module.css';
+//import { useNavigate } from 'react-router-dom';
 
 const Counter = ({ stock, initial, onAdd }) => {
     const [count, setCount] = useState(initial);
+    //const navigate = useNavigate();
 
     const aumentar = () => {
         count < stock && setCount(count + 1);
@@ -11,13 +14,24 @@ const Counter = ({ stock, initial, onAdd }) => {
         initial < count && setCount(count - 1);
     };
 
+    /* const reset = () => {
+        setCount(initial);
+        navigate('/cart');
+    }; */
+
     return (
-        <div style={{ padding: '30px', margin: '20px' }}>
-            <button onClick={restar}>-</button>
-            <p>{count}</p>
-            <button onClick={aumentar}>+</button>
+        <div className={styles.counter}>
+            <div className={styles.addSub}>
+                <button onClick={restar}>-</button>
+                <p>{count}</p>
+                <button onClick={aumentar}>+</button>
+            </div>
+
             <div>
-                <button onClick={onAdd}>Add</button>
+                <button className={styles.add} onClick={onAdd}>
+                    Add
+                </button>
+                {/* <button onClick={reset}>Reset</button> */}
             </div>
         </div>
     );

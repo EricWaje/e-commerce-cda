@@ -41,3 +41,8 @@
 .nav img {
     width: 50px;
 }
+
+.active {
+    background-color: black;
+    color: white;
+}

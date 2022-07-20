@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import s from './Card.module.css';
 
 const Card = ({ prod }) => {
@@ -8,6 +9,7 @@ const Card = ({ prod }) => {
             <div className={s.info}>
                 <h3>{prod.name}</h3>
                 <h4>$ {prod.price}</h4>
+                <Link to={`/detail/${prod.id}`}>Ver Detalle</Link>
             </div>
         </div>
     );

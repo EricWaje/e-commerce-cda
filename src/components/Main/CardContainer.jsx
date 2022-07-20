@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import CardList from './CardList';
 
 const CardContainer = () => {
     //guardo los productos en mi estado
     const [items, setItems] = useState([]);
     //logica de traerme los productos
+    const { categoryId } = useParams();
+    console.log(categoryId);
 
     useEffect(() => {
-        fetch('https://fake-products-eric.herokuapp.com/api/products')
-            .then((res) => res.json())
-            .then((res) => setItems(res));
-    }, []);
+        if (categoryId) {
+            fetch(
+                `https://fake-products-eric.herokuapp.com/api/products/category/${categoryId}`
+            )
+                .then((res) => res.json())
+                .then((res) => setItems(res));
+        } else {
+            fetch('https://fake-products-eric.herokuapp.com/api/products')
+                .then((res) => res.json())
+                .then((res) => setItems(res));
+        }
+    }, [categoryId]);
 
     //console.log(items);
 
