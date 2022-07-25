@@ -19,6 +19,10 @@ const Counter = ({ stock, initial, onAdd }) => {
         navigate('/cart');
     }; */
 
+    const agregar = () => {
+        onAdd(count);
+    };
+
     return (
         <div className={styles.counter}>
             <div className={styles.addSub}>
@@ -28,7 +32,7 @@ const Counter = ({ stock, initial, onAdd }) => {
             </div>
 
             <div>
-                <button className={styles.add} onClick={onAdd}>
+                <button className={styles.add} onClick={agregar}>
                     Add
                 </button>
                 {/* <button onClick={reset}>Reset</button> */}

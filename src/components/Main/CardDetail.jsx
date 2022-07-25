@@ -1,15 +1,31 @@
 import React from 'react';
 import style from './CardDetail.module.css';
 import Counter from '../Counter/Counter';
+import { useNavigate } from 'react-router-dom';
 
 const CardDetail = ({ item }) => {
-    const onAdd = () => {
-        console.log('Paso de función por prop');
+    //const [numero, setNumero] = useState(0);
+
+    const navigate = useNavigate();
+    const onAdd = (cantidad) => {
+        console.log(cantidad);
+        navigate('/cart');
     };
+
+    /*     if (numero === 0) {
+        return <h2>Si se cumple, no muestro el return de abajo</h2>;
+    } */
+
     return (
         <div className={style.detail}>
             <img src={item.img} alt={item.name} />
             <div className={style.info}>
+                {/* {
+                    numero === 0
+                    ? <h2>Esto</h2>
+                    : <h2>Lo otro</h2>
+                }
+                <h2>{numero === 0 ? 'Esto' : 'Lo otro'}</h2> */}
                 <h2>{item.name}</h2>
                 <p>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -26,3 +42,10 @@ const CardDetail = ({ item }) => {
 };
 
 export default CardDetail;
+
+/* const foo = (a,b) =>{
+
+}
+
+foo(1,2) 
+*/
