@@ -9,7 +9,9 @@ const Card = ({ prod }) => {
             <div className={s.info}>
                 <h3>{prod.name}</h3>
                 <h4>$ {prod.price}</h4>
-                <Link to={`/detail/${prod.id}`}>Ver Detalle</Link>
+                <Link className={s.detalle} to={`/detail/${prod.id}`}>
+                    Ver Detalle
+                </Link>
             </div>
         </div>
     );
