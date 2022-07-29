@@ -37,13 +37,27 @@ const CardContainer = () => {
         <div
             style={{
                 display: 'flex',
-                justifyContent: 'center',
                 flexDirection: 'column',
                 alignItems: 'center',
+                minHeight: '85vh',
+                margin: '30px',
             }}
         >
-            <h2>Artículos</h2>
-            {loading ? <h1>Cargando...</h1> : <CardList items={items} />}
+            {loading ? (
+                <h1>Cargando...</h1>
+            ) : (
+                <>
+                    {categoryId ? (
+                        <h2>
+                            Conocé nuestras {categoryId.toLocaleLowerCase()}
+                        </h2>
+                    ) : (
+                        <h2>Mirá todos nuestros artículos 😎</h2>
+                    )}
+
+                    <CardList items={items} />
+                </>
+            )}
         </div>
     );
 };

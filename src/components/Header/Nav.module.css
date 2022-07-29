@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 30px;
 }
 
 .navFooter h2 {
@@ -45,4 +46,41 @@
 .active {
     background-color: black;
     color: white;
+}
+
+.linkNav {
+    color: white;
+    text-decoration: none;
+    margin: 0px 10px;
+    background-color: rgb(55, 145, 241);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+}
+
+.linkFooter {
+    color: white;
+    text-decoration: none;
+    margin: 0px 10px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+}
+
+.linkNav:hover {
+    color: rgb(55, 145, 241);
+    border: 2px solid rgb(55, 145, 241);
+
+    background-color: white;
+}
+
+.logo {
+    text-decoration: none;
+    color: rgb(55, 145, 241);
+    font-style: italic;
+    cursor: pointer;
 }
