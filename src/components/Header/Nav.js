@@ -52,11 +52,31 @@ const Nav = ({ isInHedaer, prueba }) => {
                     </Link>
                 ))}
             </ul>
-            <Link to="/favorites">Favorites</Link>
-            <Link to="/cart">
-                <img src={isInHedaer ? carrito : 'logo192.png'} alt="logo" />
-                <span>{totalUnidades}</span>
-            </Link>
+            <div className={s.favCart}>
+                <Link className={s.fav} to="/favorites">
+                    Favorites
+                </Link>
+                <Link className={s.cart} to="/cart">
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            gap: 3,
+                        }}
+                    >
+                        <img
+                            src={isInHedaer ? carrito : 'logo192.png'}
+                            alt="logo"
+                            className={s.logoCart}
+                        />
+
+                        <span>
+                            {totalUnidades === 0 ? null : totalUnidades}
+                        </span>
+                    </div>
+                </Link>
+            </div>
         </nav>
     );
 };

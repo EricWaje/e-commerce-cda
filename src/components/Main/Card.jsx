@@ -18,8 +18,11 @@ const Card = ({ prod }) => {
                 <Link className={s.detalle} to={`/detail/${prod.id}`}>
                     Ver Detalle
                 </Link>
-                <button onClick={() => addToFav(prod)}>
-                    {isInFav ? 'Ya está en fav' : 'Agregar a fav'}
+                <button
+                    className={isInFav ? s.favButton : s.favButtonQuit}
+                    onClick={() => addToFav(prod)}
+                >
+                    {isInFav ? 'Quitar de fav' : 'Agregar a fav'}
                 </button>
             </div>
         </div>

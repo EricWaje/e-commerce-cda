@@ -39,10 +39,6 @@
     width: 50px;
 }
 
-.nav img {
-    width: 50px;
-}
-
 .active {
     background-color: black;
     color: white;
@@ -83,4 +79,38 @@
     color: rgb(55, 145, 241);
     font-style: italic;
     cursor: pointer;
+}
+
+.favCart {
+    display: flex;
+    align-items: center;
+    border-left: 4px solid rgb(55, 145, 241);
+    border-right: 4px solid rgb(55, 145, 241);
+    border-radius: 5px;
+    padding: 2px;
+    gap: 15px;
+}
+
+.fav {
+    text-decoration: none;
+    color: rgb(55, 145, 241);
+    border: 2px solid rgb(55, 145, 241);
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    margin: 0px 5px;
+}
+
+.cart {
+    text-decoration: none;
+    color: black;
+}
+
+.fav:hover {
+    color: white;
+    background-color: rgb(55, 145, 241);
+}
+
+.logoCart {
+    width: 35px;
 }
