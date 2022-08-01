@@ -6,7 +6,8 @@ import s from './Cart.module.css';
 //import Form from '../../Form/Form';
 
 const Cart = () => {
-    const { cart, clearCart, deleteOne } = useContext(CartContext);
+    const { cart, clearCart, deleteOne, totalPrice, disminuir, aumentar } =
+        useContext(CartContext);
     //console.log(cart);
 
     if (cart.length === 0) {
@@ -28,13 +29,15 @@ const Cart = () => {
                         key={prod.id}
                         prod={prod}
                         deleteOne={deleteOne}
+                        disminuir={disminuir}
+                        aumentar={aumentar}
                     />
                 ))}
                 <div>
                     <button className={s.vaciar} onClick={clearCart}>
                         Vaciar carrito
                     </button>
-                    <h2>Total: $</h2>
+                    <h2>Total: ${totalPrice}</h2>
                 </div>
             </div>
             {/* <Form /> */}

@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import style from './CardDetail.module.css';
 import Counter from '../Counter/Counter';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
+import { isIn } from '../../utils/utils';
 
 const CardDetail = ({ item }) => {
-    const { addToCart } = useContext(CartContext);
+    const { addToCart, cart } = useContext(CartContext);
+
+    const isInCartDetail = isIn(cart, item.id);
 
     const navigate = useNavigate();
 
@@ -27,7 +30,13 @@ const CardDetail = ({ item }) => {
                 </p>
                 <h4>#{item.categoria}</h4>
                 <h3>$ {item.price}.-</h3>
-                <Counter stock={item.stock} initial={1} onAdd={onAdd} />
+                {isInCartDetail ? (
+                    <h4>
+                        Ya está en el <Link to="/cart">carrito</Link>
+                    </h4>
+                ) : (
+                    <Counter stock={item.stock} initial={1} onAdd={onAdd} />
+                )}
             </div>
         </div>
     );
