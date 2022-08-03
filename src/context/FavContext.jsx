@@ -5,7 +5,7 @@ export const FavContext = createContext();
 export const FavProvider = (props) => {
     const [fav, setFav] = useState([]);
 
-    console.log(fav);
+    //console.log(fav);
 
     const addToFav = (item) => {
         if (isInFav(item.id)) {

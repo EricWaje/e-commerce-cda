@@ -1,37 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useFetch } from '../../customHooks/useFetch';
 import CardList from './CardList';
+import Search from './Search';
 
 const CardContainer = () => {
-    //guardo los productos en mi estado
-    const [loading, setLoading] = useState(false);
-    const [items, setItems] = useState([]);
-    //logica de traerme los productos
+    const [query, setQuery] = useState('');
     const { categoryId } = useParams();
-    //console.log(categoryId);
 
-    useEffect(() => {
-        setLoading(true);
-        if (categoryId) {
-            fetch(
-                `https://fake-products-eric.herokuapp.com/api/products/category/${categoryId}`
-            )
-                .then((res) => res.json())
-                .then((res) => {
-                    setItems(res);
-                    setLoading(false);
-                });
-        } else {
-            fetch('https://fake-products-eric.herokuapp.com/api/products')
-                .then((res) => res.json())
-                .then((res) => {
-                    setItems(res);
-                    setLoading(false);
-                });
-        }
-    }, [categoryId]);
+    const endpoint = categoryId ? `category/${categoryId}` : '';
 
-    //console.log(items);
+    // eslint-disable-next-line
+    const { data, loading, error } = useFetch(endpoint);
+
+    const handleQuery = (params) => {
+        setQuery(params);
+    };
 
     return (
         <div
@@ -43,19 +27,28 @@ const CardContainer = () => {
                 margin: '30px',
             }}
         >
-            {loading ? (
-                <h1>Cargando...</h1>
-            ) : (
+            {data && (
                 <>
-                    {categoryId ? (
-                        <h2>
-                            Conocé nuestras {categoryId.toLocaleLowerCase()}
-                        </h2>
+                    {loading ? (
+                        <h1>Cargando...</h1>
                     ) : (
-                        <h2>Mirá todos nuestros artículos 😎</h2>
+                        <>
+                            {categoryId ? (
+                                <h2>
+                                    Conocé nuestras{' '}
+                                    {categoryId.toLocaleLowerCase()}
+                                </h2>
+                            ) : (
+                                <h2>Mirá todos nuestros artículos 😎</h2>
+                            )}
+                            <Search handleQuery={handleQuery} />
+                            <CardList
+                                items={data}
+                                query={query}
+                                categoryId={categoryId}
+                            />
+                        </>
                     )}
-
-                    <CardList items={items} />
                 </>
             )}
         </div>

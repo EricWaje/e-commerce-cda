@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Checkout from '../Checkout/Checkout';
 import CardContainer from './CardContainer';
 import Cart from './Cart/Cart';
 import DetailContainer from './DetailContainer';
@@ -16,6 +17,7 @@ const Main = () => {
                 />
                 <Route path="/detail/:id" element={<DetailContainer />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout/:idCompra" element={<Checkout />} />
             </Routes>
         </div>
     );

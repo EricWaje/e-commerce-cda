@@ -1,23 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useCounter from '../../customHooks/useCounter';
 import styles from './Counter.module.css';
-//import { useNavigate } from 'react-router-dom';
 
 const Counter = ({ stock, initial, onAdd }) => {
-    const [count, setCount] = useState(initial);
-    //const navigate = useNavigate();
-
-    const aumentar = () => {
-        count < stock && setCount(count + 1);
-    };
-
-    const restar = () => {
-        initial < count && setCount(count - 1);
-    };
-
-    /* const reset = () => {
-        setCount(initial);
-        navigate('/cart');
-    }; */
+    const { count, aumentar, restar } = useCounter(stock, initial);
 
     const agregar = () => {
         onAdd(count);
@@ -35,7 +21,6 @@ const Counter = ({ stock, initial, onAdd }) => {
                 <button className={styles.add} onClick={agregar}>
                     Add
                 </button>
-                {/* <button onClick={reset}>Reset</button> */}
             </div>
         </div>
     );

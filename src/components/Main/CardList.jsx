@@ -1,7 +1,19 @@
 import React from 'react';
 import Card from './Card';
 
-const CardList = ({ items }) => {
+const CardList = ({ items, query, categoryId }) => {
+    const getFilteredItems = (prod, texto) => {
+        if (!texto) {
+            return prod;
+        }
+
+        return prod.filter((prod) => prod.name.toLowerCase().includes(query));
+    };
+
+    const itemsFiltrados = getFilteredItems(items, query);
+
+    const datos = categoryId ? items : itemsFiltrados;
+
     return (
         <div
             style={{
@@ -11,7 +23,7 @@ const CardList = ({ items }) => {
                 justifyContent: 'center',
             }}
         >
-            {items.map((prod) => (
+            {datos.map((prod) => (
                 <Card prod={prod} key={prod.id} />
             ))}
         </div>
