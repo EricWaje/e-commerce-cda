@@ -2,7 +2,7 @@
 
 ![](public/logo192.png)
 
-Demo del proyecto
+[Demo del proyecto](https://e-commerce-cda.vercel.app/)
 
 ## Librerias utilizadas
 
