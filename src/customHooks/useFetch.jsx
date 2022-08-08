@@ -2,9 +2,6 @@ import { useState, useEffect } from 'react';
 
 const URL = process.env.REACT_APP_URL;
 
-console.log('process.env :', process.env);
-console.log(URL);
-
 export const useFetch = (endpoint) => {
     const [data, setData] = useState();
     const [loading, setLoading] = useState(false);
