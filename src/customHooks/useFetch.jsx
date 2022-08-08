@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 
-const URL = `https://fake-products-eric.herokuapp.com/api/products`;
+const URL = process.env.REACT_APP_URL;
+
+console.log('process.env :', process.env);
+console.log(URL);
 
 export const useFetch = (endpoint) => {
     const [data, setData] = useState();
